@@ -42,7 +42,7 @@ class zTest implements zajajRemote
 }
 }}}
 
-ZAJAJ només implementa els mètodes que no comencin per "_" així que el constructor i el destructor de la classe no s'implementaran.
+ZAJAJ només implementa els mètodes que no comencin per "\_" així que el constructor i el destructor de la classe no s'implementaran.
 
 == La part del client ==
 
