@@ -6,14 +6,30 @@
  * @link http://www.auberger.com/pajax
  * @package ZAJAJ
  * @author alex@corretge.cat
+ * @version 0.3
  */
 
+/**
+ * Gestiona la comunicació entre el client JavaScript i 
+ * el servidor PHP
+ * @author alex@corretge.cat
+ * @version 0.3
+ * @package ZAJAJ
+ */
 class ZAJAJ
 {
 	protected $uriPath;
 	protected $classPath;
 	protected $dispatcher;
 	
+	/**
+	 * Contructor: passem els paràmetres com a propietats
+	 * de l'objecte
+	 *
+	 * @param string $uriPath
+	 * @param string $classPath
+	 * @param string $dispatcher
+	 */
 	public function __construct( $uriPath,
 											$classPath,
 											$dispatcher = "zajaj.dispatcher.code.php")
@@ -24,6 +40,12 @@ class ZAJAJ
 		$this->dispatcher = $dispatcher;
 	}
 	
+	/**
+	 * Carreguem en memòria la classe a connectar
+	 *
+	 * @param string $className
+	 * @return boolean
+	 */
 	public function loadClass($className)
 	{
 		/**
@@ -62,6 +84,16 @@ class ZAJAJ
 		}
 	}
 	
+	/**
+	 * Esbrinem si la classe és connectable per ZAJAJ.
+	 * És un tema de seguretat per assegurar-nos de que 
+	 * no es carreguen classes que no tenim previstes.
+	 * 
+	 * @see zajaj.interface.php
+	 *
+	 * @param string $className
+	 * @return boolean
+	 */
 	public function isRemotable($className)
 	{
 		if (class_exists($className))
@@ -91,6 +123,15 @@ class ZAJAJ
 		}
 	}
 	
+	/**
+	 * Generem el codi JavaScript per a cada mètode de la classe.
+	 * Si ens passen el paràmetre listener, prepararem també
+	 * les funcions i mètodes per a les crides asincrones.
+	 *
+	 * @param string $className
+	 * @param boolean $listener
+	 * @return string
+	 */
 	public function renderJavaScriptStub($className, $listener=false)
 	{
 		

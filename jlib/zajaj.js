@@ -9,6 +9,7 @@
  * @see json2.js
  * @link http://auberger.com/pajax
  * @author alex@corretge.cat
+ * @version 0.3
  */
 
 var __zajaj_id_count = 0;
