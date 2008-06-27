@@ -8,6 +8,8 @@
  * 
  * @see json2.js
  * @link http://auberger.com/pajax
+ * @link http://bloc.corretge.cat/2008/06/zajaj.html
+ * @license GNU General Public License v3 
  * @author alex@corretge.cat
  * @version 0.3
  */
@@ -37,7 +39,7 @@ function zajajConn(url)
  * Mètode: sendSynch
  * invoquem el dispatcher a modus sincron
  * 
- * @param
+ * @param llista de parametres.
  * 
  * @return valor retornat per la classe remota
  */
@@ -87,6 +89,7 @@ zajajConn.prototype.sendSynch = function (request)
 
 /**
  * Mètode sendAsynch
+ * Establim una comunicació asincrona
  */
 zajajConn.prototype.sendAsynch = function (request, listener)
 {
@@ -138,6 +141,10 @@ zajajConn.prototype.sendAsynch = function (request, listener)
 	
 }
 
+/**
+ * Mètode remoteCall
+ * establim la crida al mètode PHP en el servidor
+ */
 zajajConn.prototype.remoteCall = function (id, path, className, method, params, listener) {
 	// Marshals the parameters for the remote invocation
 	var request = new Object();

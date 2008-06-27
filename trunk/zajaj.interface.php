@@ -12,6 +12,8 @@
  * Based on PAJAX
  *                                             
  * @link http://www.auberger.com/pajax
+ * @link http://bloc.corretge.cat/2008/06/zajaj.html
+ * @license GNU General Public License v3 
  * @package ZAJAJ
  * @author alex@corretge.cat 
  * @version 0.3
