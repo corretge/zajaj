@@ -179,7 +179,7 @@ zajajListener.prototype.onError = function() {};
 
 
 /**
- * Class: zajajSimple
+ * Funció: zajajSimple
  * 
  * Fem una crida a una URL i retornem exactament el que 
  * generi.
@@ -224,4 +224,58 @@ function zajajSimple(uri)
 	}
 	
 }
- 
+/**
+ * Parsejem un resultat en JSON que ens arriba en format
+ * array('id1' => 'html', 'idn' => 'html', 'oScript' => 'javaScript');
+ *  
+ * El processem i executem el contingut de oScript, i
+ * col·loquem a cada id el text html que ens arriba.
+ * 
+ * Si el resultat comença per *ERR, el mostrarem i no farem rés.
+ */
+function zajajXtreme(resultJSON)
+{
+	/**
+	 * Si és *ERR, el mostrem i sortim
+	 */
+	if (resultJSON.substring(0,4) == '*ERR')
+	{
+		alert(resultJSON);
+		return;
+	}
+
+	/**
+	 * Parsegem el resultat JSON
+	 */
+	var zajajAry = JSON.parse(resultJSON);
+	
+	/**
+	 * Processem tota l'array.
+	 */
+	for ( var jnId in zajajAry)
+	{
+		/**
+		 * si es tracta d'un script (oScript), l'executem
+		 */
+		if (jnId == 'oScript')
+		{
+			var oScript = document.createElement('script');
+			oScript.text = zajajAry[jnId];
+			oScript.type = 'text/javascript';
+			document.body.appendChild(oScript);
+		}
+		else
+		{
+			/**
+			 * Si no és un script, ho coloquem al id que toqui.
+			 */
+			try {
+				document.getElementById(jnId).innerHTML = zajajAry[jnId];
+			}
+			catch(err)
+			{
+				alert('zajajXtreme: element id "' + jnId + '" missing.');
+			}
+		}
+	}	
+}

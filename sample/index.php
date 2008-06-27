@@ -29,6 +29,12 @@
 		 * Recuperem un text directament
 		 */
 		document.getElementById('simple').innerHTML = zajajSimple('simple.html');
+		
+		/**
+		 * Parsejem un ZAJAJ Extrem ;-)
+		 */
+		zajajXtreme(ztest.xtreme('Àlex Corretgé'));
+		
 	}
 	</script>
 
@@ -40,5 +46,6 @@ suma <input type="text" id="a"> + <input type="text" id="b">
 </div>
 <div id="result"></div>
 <div id="simple"></div>
+<div id="xt"></div>
 </body>
 </html>												

@@ -34,7 +34,7 @@ if (isset($_REQUEST['path']) and $_REQUEST['path'] != "")
 }
 else
 {
-		$err = "ZAJAJ.import (". microtime() ."): Can't load class {$_REQUEST['class']}.\n";
+		$err = "*ERR ZAJAJ.import (". microtime() ."): Can't load class {$_REQUEST['class']}.\n";
 		/**
 		 * Debug purpose
 		 *
@@ -67,7 +67,7 @@ if (isset($_REQUEST['class']) and $_REQUEST['class'] != "")
 	}
 	else
 	{
-		$err = "ZAJAJ.import (". microtime() ."): Can't load class {$_REQUEST['class']}.\n";
+		$err = "*ERR ZAJAJ.import (". microtime() ."): Can't load class {$_REQUEST['class']}.\n";
 		/**
 		 * Debug purpose
 		 *
@@ -82,7 +82,7 @@ else
 	/**
 	 * Si no ens indiquen cap classe a importar, retornarem error.
 	 */
-	$err = "ZAJAJ.import (". microtime() ."): parameter 'class' not declared on url {$_SERVER['REQUEST_URI']} .\n";
+	$err = "*ERR ZAJAJ.import (". microtime() ."): parameter 'class' not declared on url {$_SERVER['REQUEST_URI']} .\n";
 	/**
 	 * Debug purpose
 	 *
