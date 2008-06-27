@@ -1,6 +1,6 @@
 #summary Introducció a ZAJAJ
 #labels Featured
-= Introducció a ZAJAJ =
+= ZendFramework Asynchronous JavaScript And JSON =
 
 ZAJAJ és una adaptació de la gran biblioteca [http://auberger.com/pajax PAJAX] que simplifica radicalment la utilització de mètodes de classes PHP des de JavaScript.
 
