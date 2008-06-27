@@ -7,3 +7,5 @@ ZAJAJ és una adaptació de la gran biblioteca [http://auberger.com/pajax PAJAX]
 ZAJAJ estableix una comunicació entre el client i el servidor emprant la notació [http://www.json.org/ JSON] que simplifica i agilitza la gestió de dades, en substitució de la comunicació via XML. És per aquesta raó que aquesta biblioteca es diu ZAJAJ enlloc de ZAJAX.
 
 Per a gestionar JSON al servidor, emprarem el [http://framework.zend.com/manual/en/zend.json.html Zend Framework].
+
+Trobareu una explicació senzilla de com implementar-ho a HolaMon.
