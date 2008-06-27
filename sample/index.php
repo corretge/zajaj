@@ -9,7 +9,7 @@
 	<title>ZAJAJ Demo</title>
 	<script type="text/JavaScript" src="../jlib/json2min.js"></script>
 	<script type="text/JavaScript" src="../jlib/zajaj.js"></script>
-	<script type="text/JavaScript" src="../zajaj.import.code.php?class=zTest&path=<?php echo rawurlencode('sample/'); ?>"></script>
+	<script type="text/JavaScript" src="../zajaj.import.code.php?class=zTest&path=<?php echo rawurlencode(dirname(__FILE__)); ?>"></script>
 	
 	
 	<script type="text/javascript">
