@@ -1,12 +1,12 @@
 <?php
 /**
- * Crea la interficie de comunicació entre el client
- * i el servidor
+ * Executa la comunicació entre el client i el servidor.
  * 
  * Based on PAJAX                                            
  * @link http://www.auberger.com/pajax
  * @package ZAJAJ
  * @author alex@corretge.cat
+ * @version 0.3
  */
 
 /**

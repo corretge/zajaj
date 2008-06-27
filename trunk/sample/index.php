@@ -1,6 +1,8 @@
 <?php
 /**
  * Demo ZAJAJ
+ * 
+ * @author alex@corretge.cat
  */
 ?>
 <html>
