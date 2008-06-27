@@ -4,6 +4,11 @@
  */
 
 /**
+ * Incorporem les funcions JSON del Zend Framework
+ */
+require_once ('Zend/Json.php');
+
+/**
  * recuperem la interficie, no qualifiquem la path
  * doncs quan es carregui ja estarà a la de ZAJAJ
  */
@@ -32,6 +37,14 @@ class zTest implements zajajRemote
 	public function suma($a, $b)
 	{
 		return $a + $b;
+	}
+	
+	public function xtreme($lit)
+	{
+		$array = array('xt' => "Hola $lit",
+							'oScript' => "alert('Hola $lit');");
+		
+		return Zend_Json::encode($array);
 	}
 }
 ?>

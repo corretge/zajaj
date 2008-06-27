@@ -129,7 +129,7 @@ if ($zajaj->loadClass($class))
 }
 else
 {
-	$output = "ZAJAJ.dispatcher (". microtime() ."): Can't load class {$class}.\n";
+	$output = "*ERR ZAJAJ.dispatcher (". microtime() ."): Can't load class {$class}.\n";
 	/**
 	 * Debug purpose
 	 *
@@ -188,7 +188,7 @@ if (! is_null($obj) and is_object($obj))
 }
 else
 {
-	$output = "ZAJAJ.dispatcher (". microtime() ."): Could not dispatch to valid object.\n";
+	$output = "*ERR ZAJAJ.dispatcher (". microtime() ."): Could not dispatch to valid object.\n";
 	/**
 	 * Debug purpose
 	 *
