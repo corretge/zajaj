@@ -42,6 +42,10 @@
 
 </head>
 <body>
+<h1>Demo llibreria <a href="http://bloc.corretge.cat/2008/06/zajaj.html" target="_blank">ZAJAJ</a></h1>
+<p>
+
+</p>
 <div id="form">
 suma <input type="text" id="a"> + <input type="text" id="b">
 <input type="button" onclick="zSum();" value="Calcular">
