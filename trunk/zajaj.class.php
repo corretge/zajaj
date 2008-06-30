@@ -40,9 +40,16 @@ class ZAJAJ
 	{
 
 		$this->uriPath = $uriPath;
-		$this->urlClassPath = $classPath;
+		
 		$this->classPath = rawurldecode($classPath);
 		$this->dispatcher = $dispatcher;
+		
+		/**
+		 * En servidors windows sembla com si automàticament descodifiquès
+		 * així que el mantenim.
+		 */
+		$this->urlClassPath = rawurlencode($classPath);
+		
 	}
 	
 	/**
