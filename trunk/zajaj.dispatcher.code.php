@@ -105,8 +105,20 @@ if ($zajaj->loadClass($class))
 		error_log("ZAJAJ.dispatcher (". microtime() ."): Restoring object from session.\n");
 		/**/
 		$obj = $objects[$id];
+
+		/**
+		 * Si la sessió ja havia estat creada anteriorment a la definició de la classe,
+		 * ens retornarà un __PHP_Incomplete_Class, així que en aquest cas
+		 * forçarem la creació de l'objecte.
+		 */
+		$mustCrtObj = is_a($obj, '__PHP_Incomplete_Class');
 	} 
 	else 
+	{
+		$mustCrtObj = true;
+	}
+	
+	if($mustCrtObj)
 	{
 		if ($zajaj->isRemotable($class)) 
 		{
