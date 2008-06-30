@@ -23,6 +23,7 @@ class ZAJAJ
 {
 	protected $uriPath;
 	protected $classPath;
+	protected $urlClassPath;
 	protected $dispatcher;
 	
 	/**
@@ -39,6 +40,7 @@ class ZAJAJ
 	{
 
 		$this->uriPath = $uriPath;
+		$this->urlClassPath = $classPath;
 		$this->classPath = rawurldecode($classPath);
 		$this->dispatcher = $dispatcher;
 	}
@@ -215,7 +217,7 @@ zajajScriptA2;
 			params = null;
 		}
 	
-		var ret = new zajajConn("{$this->uriPath}{$this->dispatcher}").remoteCall(this.__zajaj_object_id, "{$this->classPath}", "{$className}", "{$methodName}", params, this.__zajaj_listener); 
+		var ret = new zajajConn("{$this->uriPath}{$this->dispatcher}").remoteCall(this.__zajaj_object_id, "{$this->urlClassPath}", "{$className}", "{$methodName}", params, this.__zajaj_listener); 
 		return ret;	
 	}
 	
