@@ -64,8 +64,9 @@ class zTest implements zajajRemote
 	 */
 	public function xtreme($lit)
 	{
-		$array = array('xt' => "Hola $lit",
-							'oScript' => "alert('Hola $lit');");
+		$array = array('xt' => "Hola $lit modificat des de zajajXtreme.",
+							'oScript' => "alert('Hola $lit');
+											document.getElementById('xt').innerHTML = 'Hola $lit ara modificat des de oScript.';");
 		
 		return Zend_Json::encode($array);
 	}
