@@ -154,10 +154,11 @@ class ZAJAJ
 		 * recuperem els mètodes de la classe
 		 */
 		$classMethods = get_class_methods($className);
-		
+	
 		/**
 		 * Muntem la part de listener si és el cas
 		 */
+		$zajaj_object_id = md5(uniqid(rand(), true));
 		$jScript .= <<< zajajScriptA
 		
 	function {$className}(listener) {

@@ -38,7 +38,7 @@ if (isset($_REQUEST['path']) and $_REQUEST['path'] != "")
 }
 else
 {
-		$err = "*ERR ZAJAJ.import (". microtime() ."): Can't load class {$_REQUEST['class']}.\n";
+		$err = "*ERR ZAJAJ.import (". microtime() ."): Can't find 'path' parm on request.\n";
 		/**
 		 * Debug purpose
 		 *
@@ -71,7 +71,7 @@ if (isset($_REQUEST['class']) and $_REQUEST['class'] != "")
 	}
 	else
 	{
-		$err = "*ERR ZAJAJ.import (". microtime() ."): Can't load class {$_REQUEST['class']}.\n";
+		$err = "*ERR ZAJAJ.import (". microtime() ."): Can't load class {$_REQUEST['path']}/{$_REQUEST['class']}.\n";
 		/**
 		 * Debug purpose
 		 *
