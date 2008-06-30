@@ -25,7 +25,15 @@ require_once 'zajaj.class.php';
  * Recuperem el que ens han passat a la
  * capçalera HTTP en mode POST
  */
-$input = $GLOBALS['HTTP_RAW_POST_DATA'];
+if (isset($GLOBALS['HTTP_RAW_POST_DATA']))
+{
+	$input = $GLOBALS['HTTP_RAW_POST_DATA'];
+}
+else
+{
+	echo "*ERR ZAJAJ.dispatcher (". microtime() ."): Could not get POST data.\n";
+	exit;
+}
 
 /**
  * Debug purpose
