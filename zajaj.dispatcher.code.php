@@ -80,7 +80,7 @@ if ($zajaj->loadClass($class))
 	 * Establim la sessió aquí, un cop carregada la classe
 	 * per així no ens generi un __PHP_Incomplete_Class
 	 */
-	session_start();
+	@session_start();
 	
 	/**
 	 * Declarem la col·lecció d'objectes a la sessió
