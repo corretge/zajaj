@@ -36,6 +36,17 @@ function zajajConn(url)
 }
 
 /**
+ * Si és un IE < 7 fem com si el navegador poguès executar
+ * XMLHttpRequest.
+ * 
+ * @link http://code.google.com/p/zajaj/issues/detail?id=1
+ * issue 1: Error using IE6
+ */
+/*@cc_on @if (@_win32 && @_jscript_version >= 5) if (!window.XMLHttpRequest)
+window.XMLHttpRequest = function() { return new ActiveXObject('Microsoft.XMLHTTP') }
+@end @*/ 
+
+/**
  * Mètode: sendSynch
  * invoquem el dispatcher a modus sincron
  * 
