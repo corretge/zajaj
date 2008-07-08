@@ -32,6 +32,7 @@
 		 */
 		document.getElementById('simple').innerHTML = zajajSimple('simple.html');
 		
+		
 		/**
 		 * Parsejem un ZAJAJ Extrem ;-)
 		 */

@@ -1,7 +1,7 @@
 /**
  * ZAJAJ
  * 
- * La base la tenim en una gran biblioteca anomenada PAJAX, però 
+ * La base la tenim en una gran biblioteca anomenada PAJAX, perÃ² 
  * emprant les classes JSON oficials.
  * 
  * 
@@ -23,7 +23,7 @@ function __zajaj_get_next_id() {
 
  /**
   * Classe: zajajConn
-  * Gestiona la comunicació entre el servidor i el client
+  * Gestiona la comunicaciÃ³ entre el servidor i el client
   */
   
 /**
@@ -36,18 +36,26 @@ function zajajConn(url)
 }
 
 /**
- * Si és un IE < 7 fem com si el navegador poguès executar
+ * Si Ã©s un IE < 7 fem com si el navegador poguÃ¨s executar
  * XMLHttpRequest.
  * 
  * @link http://code.google.com/p/zajaj/issues/detail?id=1
  * issue 1: Error using IE6
  */
-/*@cc_on @if (@_win32 && @_jscript_version >= 5) if (!window.XMLHttpRequest)
-window.XMLHttpRequest = function() { return new ActiveXObject('Microsoft.XMLHTTP') }
-@end @*/ 
+if (!window.XMLHttpRequest)
+{
+	var jIE6 = true;
+	window.XMLHttpRequest = function() { 
+		return new ActiveXObject('Microsoft.XMLHTTP') 
+	}
+}
+else
+{
+	var jIE6 = false;
+}
 
 /**
- * Mètode: sendSynch
+ * MÃ¨tode: sendSynch
  * invoquem el dispatcher a modus sincron
  * 
  * @param llista de parametres.
@@ -69,7 +77,7 @@ zajajConn.prototype.sendSynch = function (request)
 		zHttp.onreadystatechange = function() { };
 		
 		/**
-		 * Establim la comunicació amb la url
+		 * Establim la comunicaciÃ³ amb la url
 		 */
 		 try
 		 {
@@ -81,7 +89,7 @@ zajajConn.prototype.sendSynch = function (request)
 		 }
 		 
 		 /**
-		  * Enviem la sol·licitud
+		  * Enviem la solÂ·licitud
 		  */
 		 zHttp.setRequestHeader('Content-Type', 'text/json');
 		 zHttp.send(JSON.stringify(request));
@@ -99,8 +107,8 @@ zajajConn.prototype.sendSynch = function (request)
 }
 
 /**
- * Mètode sendAsynch
- * Establim una comunicació asincrona
+ * MÃ¨tode sendAsynch
+ * Establim una comunicaciÃ³ asincrona
  */
 zajajConn.prototype.sendAsynch = function (request, listener)
 {
@@ -115,7 +123,7 @@ zajajConn.prototype.sendAsynch = function (request, listener)
 		zHttp.onreadystatechange = function()
 		{
 			/**
-			 * Si la comunicació és satisfactòria
+			 * Si la comunicaciÃ³ Ã©s satisfactÃ²ria
 			 */
 			if (zHttp.readyState == 4 && zHttp.status == 200)
 			{
@@ -153,8 +161,8 @@ zajajConn.prototype.sendAsynch = function (request, listener)
 }
 
 /**
- * Mètode remoteCall
- * establim la crida al mètode PHP en el servidor
+ * MÃ¨tode remoteCall
+ * establim la crida al mÃ¨tode PHP en el servidor
  */
 zajajConn.prototype.remoteCall = function (id, path, className, method, params, listener) {
 	// Marshals the parameters for the remote invocation
@@ -198,7 +206,7 @@ zajajListener.prototype.onError = function() {};
 
 
 /**
- * Funció: zajajSimple
+ * FunciÃ³: zajajSimple
  * 
  * Fem una crida a una URL i retornem exactament el que 
  * generi.
@@ -218,11 +226,15 @@ function zajajSimple(uri)
 		zHttp.onreadystatechange = function() { };
 		
 		/**
-		 * Establim la comunicació amb la url
+		 * Establim la comunicaciÃ³ amb la url.
+		 * 
+		 * Fem que sigui sincrona, doncs ens esperarem a
+		 * que finalitzi la comunicaciÃ³ per a gestionar 
+		 * el resultat.
 		 */
 		 try
 		 {
-		 	zHttp.open('GET', uri);
+		 	zHttp.open('GET', uri, false);
 		 }
 		 catch(e) 
 		 {
@@ -230,8 +242,10 @@ function zajajSimple(uri)
 		 }
 		 
 		 zHttp.send();
-		 
+
 		 var jResponse = zHttp.responseText;
+		 
+
 		 return  jResponse;
 	}
 	else
@@ -248,14 +262,14 @@ function zajajSimple(uri)
  * array('id1' => 'html', 'idn' => 'html', 'oScript' => 'javaScript');
  *  
  * El processem i executem el contingut de oScript, i
- * col·loquem a cada id el text html que ens arriba.
+ * colÂ·loquem a cada id el text html que ens arriba.
  * 
- * Si el resultat comença per *ERR, el mostrarem i no farem rés.
+ * Si el resultat comenÃ§a per *ERR, el mostrarem i no farem rÃ©s.
  */
 function zajajXtreme(resultJSON)
 {
 	/**
-	 * Si és *ERR, el mostrem i sortim
+	 * Si Ã©s *ERR, el mostrem i sortim
 	 */
 	if (resultJSON.substring(0,4) == '*ERR')
 	{
@@ -286,7 +300,7 @@ function zajajXtreme(resultJSON)
 		else
 		{
 			/**
-			 * Si no és un script, ho coloquem al id que toqui.
+			 * Si no Ã©s un script, ho coloquem al id que toqui.
 			 */
 			try {
 				document.getElementById(jnId).innerHTML = zajajAry[jnId];
