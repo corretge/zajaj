@@ -95,6 +95,7 @@ zajajConn.prototype.sendSynch = function (request)
 		 zHttp.send(JSON.stringify(request));
 		 
 		 var jResponse = zHttp.responseText;
+
 		 return  JSON.parse(jResponse);
 	}
 	else
@@ -240,8 +241,19 @@ function zajajSimple(uri)
 		 {
 		 	throw "*ZER0202: Can't open this url: " + uri;
 		 }
-		 
-		 zHttp.send();
+	
+		 try
+		 { 
+		 	/**
+		 	 * issue 2  - 12/08/2008
+		 	 * Afegim null com a paràmetre, doncs si no el FF3 casca.
+		 	 */
+		 	zHttp.send(null);
+		 }
+		 catch(e)
+		 {
+		 	throw "*ZER0203: Can't send data: " + e.message;
+		 }
 
 		 var jResponse = zHttp.responseText;
 		 
