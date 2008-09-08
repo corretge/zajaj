@@ -39,6 +39,7 @@ header ('Content-type: text/html; charset=utf-8');
 		 */
 		zajajXtreme(ztest.xtreme('Àlex Corretgé'));
 		
+		zajajXtreme(zajajSimple('test.xtreme.php', 'PimPamPum'));
 	}
 	</script>
 
@@ -55,5 +56,7 @@ suma <input type="text" id="a"> + <input type="text" id="b">
 <div id="result"></div>
 <div id="simple"></div>
 <div id="xt"></div>
+<div id="xt2"></div>
+<div id="xt3"></div>
 </body>
 </html>												
