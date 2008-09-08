@@ -278,7 +278,7 @@ function zajajSimple(uri)
  * 
  * Si el resultat comença per *ERR, el mostrarem i no farem rés.
  */
-function zajajXtreme(resultJSON)
+function zajajXtreme(resultJSON, errorHandler)
 {
 	/**
 	 * Si és *ERR, el mostrem i sortim
@@ -286,6 +286,13 @@ function zajajXtreme(resultJSON)
 	if (resultJSON.substring(0,4) == '*ERR')
 	{
 		alert(resultJSON);
+		/**
+		 * si ens passen un control d'errors l'executem.
+		 */
+		if (errorHandler != undefined)
+		{
+			eval(errorHandler);
+		}
 		return;
 	}
 
