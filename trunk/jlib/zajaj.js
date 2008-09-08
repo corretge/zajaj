@@ -246,7 +246,7 @@ function zajajSimple(uri)
 		 { 
 		 	/**
 		 	 * issue 2  - 12/08/2008
-		 	 * Afegim null com a paràmetre, doncs si no el FF3 casca.
+		 	 * Afegim null com a parï¿½metre, doncs si no el FF3 casca.
 		 	 */
 		 	zHttp.send(null);
 		 }
@@ -323,4 +323,38 @@ function zajajXtreme(resultJSON)
 			}
 		}
 	}	
+}
+
+/**
+ * Retornem el contingut d'un formulari 
+ * en una array JSON
+ */
+function zajajFSON(idForm)
+{
+
+	var f = document.getElementById(idForm);
+	var count = 0;
+	var formulari = new Object();
+	var howMany = f.elements.length; 
+	for (count = 0; count < howMany; count++) 
+	{ 
+		if (f.elements[count].tagName =='INPUT' || f.elements[count].tagName =='TEXTAREA') {	
+			if (f.elements[count].type == 'checkbox')
+			{
+				if (f.elements[count].checked) {
+					formulari[f.elements[count].name] = f.elements[count].value;
+				}
+			}
+			else
+			{
+				formulari[f.elements[count].name] = f.elements[count].value;
+			}
+		}
+	}
+
+
+	var ser = JSON.stringify(formulari);
+	
+	return ser;			
+	
 }
