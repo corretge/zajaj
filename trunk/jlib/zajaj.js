@@ -294,9 +294,27 @@ function zajajXtreme(resultJSON, errorHandler)
 	}
 
 	/**
-	 * Parsegem el resultat JSON
+	 * Parsegem el resultat JSON i controlem que realment sigui una 
+	 * cadena parsejable. En cas de que no ho sigui (generalment una
+	 * petada del PHP) mostrem el text que s'havia de parsejar.
 	 */
-	var zajajAry = JSON.parse(resultJSON);
+	try 
+	{
+		var zajajAry = JSON.parse(resultJSON);
+	}
+	catch(err)
+	{
+		alert(resultJSON);
+		/**
+		 * si ens passen un control d'errors l'executem.
+		 */
+		if (errorHandler != undefined)
+		{
+			eval(errorHandler);
+		}
+		
+		return;
+	}
 	
 	/**
 	 * Processem tota l'array.
@@ -318,8 +336,10 @@ function zajajXtreme(resultJSON, errorHandler)
 			/**
 			 * Si no és un script, ho coloquem al id que toqui.
 			 */
+			
 			try {
-				document.getElementById(jnId).innerHTML = zajajAry[jnId];
+				var jInd = document.getElementById(jnId); 
+				jInd.innerHTML = zajajAry[jnId];
 			}
 			catch(err)
 			{
