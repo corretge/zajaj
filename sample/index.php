@@ -29,10 +29,10 @@ header ('Content-type: text/html; charset=utf-8');
 		document.getElementById('result').innerHTML = ztest.suma(a,b);
 		
 		/**
-		 * Recuperem un text directament
+		 * Recuperem un text directament, i després enviem dades com a POST.
 		 */
 		document.getElementById('simple').innerHTML = zajajSimple('simple.html');
-		
+		document.getElementById('simple').innerHTML = zajajSimple('simple.php', "testPostData");
 		
 		/**
 		 * Parsejem un ZAJAJ Extrem ;-)

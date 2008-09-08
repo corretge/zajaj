@@ -212,7 +212,7 @@ zajajListener.prototype.onError = function() {};
  * Fem una crida a una URL i retornem exactament el que 
  * generi.
  */
-function zajajSimple(uri)
+function zajajSimple(uri, postData)
 {
 	/**
 	 * Instanciem un HttpRequest
@@ -235,25 +235,22 @@ function zajajSimple(uri)
 		 */
 		 try
 		 {
-		 	zHttp.open('GET', uri, false);
+		 	if (postData != undefined)
+		 	{
+		 		zHttp.open('POST', uri, false);
+		 		zHttp.send(postData);		 		
+		 	}
+		 	else
+		 	{
+		 		zHttp.open('GET', uri, false);
+		 		zHttp.send(null);
+		 	}
 		 }
 		 catch(e) 
 		 {
 		 	throw "*ZER0202: Can't open this url: " + uri;
 		 }
 	
-		 try
-		 { 
-		 	/**
-		 	 * issue 2  - 12/08/2008
-		 	 * Afegim null com a par�metre, doncs si no el FF3 casca.
-		 	 */
-		 	zHttp.send(null);
-		 }
-		 catch(e)
-		 {
-		 	throw "*ZER0203: Can't send data: " + e.message;
-		 }
 
 		 var jResponse = zHttp.responseText;
 		 
