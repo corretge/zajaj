@@ -15,10 +15,13 @@ else
 {
 	$lit = 'Papet';
 }
-
+/**
 $array = array('xt2' => "Hola $lit modificat des de test.xtreme.php.",
 					'oScript' => "	document.getElementById('xt3').innerHTML = 'Hola $lit ara afegit des de oScript a test.xtreme.php.';");
-		
+		*/
+
+$array = array(	'oScript' => "	document.getElementById('xt3').innerHTML = 'Hola $lit ara afegit des de oScript a test.xtreme.php.';");
+
 echo Zend_Json::encode($array);
 
 ?>
