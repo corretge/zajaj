@@ -355,20 +355,45 @@ function zajajXtreme(resultJSON, errorHandler)
  */
 function zajajFSON(idForm)
 {
-
-	var f = document.getElementById(idForm);
-	var count = 0;
+	/**
+	 * Definim l'objecte que contindrà els camps i els valors
+	 * del formulari de tipus INPUT, TEXTAREA i SELECT
+	 */
 	var formulari = new Object();
-	var howMany = f.elements.length; 
+	
+	/**
+	 * Recuperem el formulari que ens han passat.
+	 * si no existís, ja està bé que peti
+	 */
+	var f = document.getElementById(idForm);
+	
+	/**
+	 * Esbrinem quants elements hi ha al formulari
+	 */
+	var count = 0;
+	var howMany = f.elements.length;
+	
+	/**
+	 * Processem els elements del formulari
+	 */ 
 	for (count = 0; count < howMany; count++) 
 	{ 
-		if (f.elements[count].tagName =='INPUT' || f.elements[count].tagName =='TEXTAREA') {	
+		/**
+		 * Només necessitem els de tipus INPUT, TEXTAERA i SELECT ... de moment
+		 */
+		if (f.elements[count].tagName =='INPUT' || f.elements[count].tagName =='TEXTAREA' || f.elements[count].tagName =='SELECT') {
+			/**
+			 * En el cas dels checkbox hem de recuperar el valor només si és checked.
+			 */	
 			if (f.elements[count].type == 'checkbox')
 			{
 				if (f.elements[count].checked) {
 					formulari[f.elements[count].name] = f.elements[count].value;
 				}
 			}
+			/**
+			 * Per a la resta obtindrem la propietat value
+			 */
 			else
 			{
 				formulari[f.elements[count].name] = f.elements[count].value;
@@ -377,8 +402,9 @@ function zajajFSON(idForm)
 	}
 
 
+	/**
+	 * Passem l'objecte a JSON per a que es pugui tractar com una
+	 * Array Associativa des de PHP o altres llenguatges.
+	 */
 	var ser = JSON.stringify(formulari);
-	
-	return ser;			
-	
-}
+	return ser;			}
