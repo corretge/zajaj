@@ -317,19 +317,22 @@ function zajajXtreme(resultJSON, errorHandler)
 	}
 	
 	/**
+	 * Definim l'scrip com a none per omissió
+	 */
+	var jHiHaScript = 'none';
+	
+	/**
 	 * Processem tota l'array.
 	 */
 	for ( var jnId in zajajAry)
 	{
 		/**
-		 * si es tracta d'un script (oScript), l'executem
+		 * si es tracta d'un script (oScript), ho preparem tot
+		 * i ho executarem després.
 		 */
 		if (jnId == 'oScript')
 		{
-			var oScript = document.createElement('script');
-			oScript.text = zajajAry[jnId];
-			oScript.type = 'text/javascript';
-			document.body.appendChild(oScript);
+			jHiHaScript = zajajAry[jnId];
 		}
 		else
 		{
@@ -346,7 +349,21 @@ function zajajXtreme(resultJSON, errorHandler)
 				alert('zajajXtreme: element id "' + jnId + '" missing.');
 			}
 		}
-	}	
+	}
+	
+	/**
+	 * Si hi ha script a executar, és la darrera cosa que fem
+	 * doncs molts cops es fa referència a elements que s'han carregat
+	 * en altres divs.
+	 */	
+	 if (jHiHaScript != 'none')
+	 {
+	 		var oScript = document.createElement('script');
+			oScript.text = jHiHaScript;
+			oScript.type = 'text/javascript';
+			document.body.appendChild(oScript);
+	 	
+	 }
 }
 
 /**
