@@ -424,4 +424,5 @@ function zajajFSON(idForm)
 	 * Array Associativa des de PHP o altres llenguatges.
 	 */
 	var ser = JSON.stringify(formulari);
-	return ser;			}
+	return ser;			
+}
