@@ -370,7 +370,7 @@ function zajajXtreme(resultJSON, errorHandler)
  * Retornem el contingut d'un formulari 
  * en una array JSON
  */
-function zajajFSON(idForm)
+function zajajFSON(idForm, idFrame)
 {
 	/**
 	 * Definim l'objecte que contindr√† els camps i els valors
@@ -378,12 +378,19 @@ function zajajFSON(idForm)
 	 */
 	var formulari = new Object();
 	
-	/**
-	 * Recuperem el formulari que ens han passat.
-	 * si no exist√≠s, ja est√† b√© que peti
-	 */
-	var f = document.getElementById(idForm);
-	
+		
+	if (idFrame != undefined)
+	{
+		var f = top.frames[idFrame].document.getElementById(idForm);
+	}
+	else
+	{
+		/**
+		 * Recuperem el formulari que ens han passat.
+		 * si no existÌs, ja est‡† bÈ que peti
+		 */
+		var f = document.getElementById(idForm);
+	}
 	/**
 	 * Esbrinem quants elements hi ha al formulari
 	 */
