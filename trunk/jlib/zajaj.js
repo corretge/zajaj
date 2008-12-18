@@ -280,9 +280,9 @@ function zajajXtreme(resultJSON, errorHandler)
 	/**
 	 * Si és *ERR, el mostrem i sortim
 	 */
-	if (resultJSON.substring(0,4) == '*ERR')
+	if (resultJSON.substring(0,4) == '*ERR' || resultJSON.substring(0,4) == '*MSG')
 	{
-		alert(resultJSON);
+		alert(resultJSON.substring(4));
 		/**
 		 * si ens passen un control d'errors l'executem.
 		 */
